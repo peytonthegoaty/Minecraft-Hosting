@@ -1,0 +1,53 @@
+{
+  "name": "blockhost",
+  "productName": "Blockhost",
+  "version": "0.1.0",
+  "description": "Host Minecraft servers from your own PC — downloads Java, server files and tunnels for you.",
+  "main": "./out/main/index.js",
+  "author": "Blockhost",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "preview": "electron-vite preview",
+    "typecheck": "tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.web.json",
+    "test": "vitest run",
+    "web": "vite --config vite.web.config.ts",
+    "build:win": "electron-vite build && electron-builder --win",
+    "build:mac": "electron-vite build && electron-builder --mac",
+    "build:linux": "electron-vite build && electron-builder --linux"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/yauzl": "^3.4.0",
+    "@types/yazl": "^3.3.1",
+    "@vitejs/plugin-react": "^6.1.2",
+    "autoprefixer": "^10.6.1",
+    "electron": "^45.0.0",
+    "electron-builder": "^26.15.3",
+    "electron-vite": "^6.0.0",
+    "postcss": "^8.5.31",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5"
+  },
+  "dependencies": {
+    "@monaco-editor/react": "^4.7.0",
+    "electron-updater": "^6.8.9",
+    "lucide-react": "^1.61.0",
+    "monaco-editor": "^0.57.0",
+    "monaco-yaml": "^5.5.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "smol-toml": "^1.9.1",
+    "tar": "^7.5.22",
+    "yaml": "^2.9.1",
+    "yauzl": "^3.4.0",
+    "yazl": "^3.3.1",
+    "zustand": "^5.0.16"
+  }
+}
