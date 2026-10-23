@@ -9,7 +9,7 @@ import { attempt, useStore } from '../store'
 
 type Tab = 'installed' | 'browse' | 'updates'
 
-const TILE = ['#86EFAC', '#93C5FD', '#FCD34D', '#F9A8D4', '#C4B5FD', '#FDBA74', '#5EEAD4']
+const TILE = ['#FDBA74', '#93C5FD', '#FCD34D', '#F9A8D4', '#C4B5FD', '#FCA5A5', '#A5B4FC']
 function tile(name: string): string {
   let h = 0
   for (const c of name) h = (h * 31 + c.charCodeAt(0)) >>> 0

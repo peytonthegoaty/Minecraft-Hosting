@@ -118,7 +118,7 @@ export function createMockBridge(): Bridge {
   }
   const contents: Record<string, string> = {
     'config/paper-global.yml': `# Paper global configuration\n_version: 29\nchunk-loading-basic:\n  autoconfig-send-distance: true\n  player-max-chunk-load-rate: 100.0\n  player-max-chunk-send-rate: 75.0\nchunk-system:\n  io-threads: -1\n  worker-threads: -1\nmessages:\n  no-permission: '<red>You can''t do that here.'\n  use-display-name-in-quit-message: false\nmisc:\n  max-joins-per-tick: five   # should be a number\n  region-file-cache-size: 256\n  use-alternative-luck-formula: false\nproxies:\n  velocity:\n    enabled: false\n    online-mode: true\nwatchdog:\n  early-warning-delay: 10000\n`,
-    'server.properties': `#Minecraft server properties\nmotd=&aWelcome to Survival SMP! &7Season 3\nmax-players=20\ngamemode=survival\ndifficulty=normal\nwhite-list=true\nonline-mode=true\npvp=true\nview-distance=10\nsimulation-distance=8\nserver-port=25565\n`
+    'server.properties': `#Minecraft server properties\nmotd=&6Welcome to Survival SMP! &7Season 3\nmax-players=20\ngamemode=survival\ndifficulty=normal\nwhite-list=true\nonline-mode=true\npvp=true\nview-distance=10\nsimulation-distance=8\nserver-port=25565\n`
   }
 
   // Live updates for the running server.

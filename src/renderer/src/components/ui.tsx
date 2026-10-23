@@ -295,12 +295,12 @@ export function Spinner({ size = 16 }: { size?: number }) {
 }
 
 export function ServerTile({ name, type, size = 40 }: { name: string; type: string; size?: number }) {
-  const colors: Record<string, string> = { paper: '#86EFAC', purpur: '#C4B5FD', vanilla: '#D6D3D1', fabric: '#FCD34D', forge: '#93C5FD', neoforge: '#FDBA74' }
+  const colors: Record<string, string> = { paper: '#FDBA74', purpur: '#C4B5FD', vanilla: '#D6D3D1', fabric: '#FCD34D', forge: '#93C5FD', neoforge: '#FCA5A5' }
   return (
     <span
       aria-hidden
       className="inline-flex shrink-0 items-center justify-center rounded-[10px] font-bold text-[#0D1013]"
-      style={{ width: size, height: size, background: colors[type] ?? '#86EFAC', fontSize: size * 0.4 }}
+      style={{ width: size, height: size, background: colors[type] ?? '#FDBA74', fontSize: size * 0.4 }}
     >
       {name.trim()[0]?.toUpperCase() ?? '?'}
     </span>

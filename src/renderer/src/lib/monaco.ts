@@ -29,8 +29,8 @@ monaco.editor.defineTheme('crabhost-dark', {
   inherit: true,
   rules: [
     { token: 'type', foreground: '60A5FA' },
-    { token: 'string', foreground: '86EFAC' },
-    { token: 'number', foreground: 'FDBA74' },
+    { token: 'string', foreground: 'FDBA74' },
+    { token: 'number', foreground: 'F9A8D4' },
     { token: 'keyword', foreground: 'FBBF24' },
     { token: 'comment', foreground: '7C8794', fontStyle: 'italic' }
   ],
@@ -48,8 +48,8 @@ monaco.editor.defineTheme('crabhost-light', {
   inherit: true,
   rules: [
     { token: 'type', foreground: '1D4ED8' },
-    { token: 'string', foreground: '15803D' },
-    { token: 'number', foreground: '9A3412' },
+    { token: 'string', foreground: 'C2410C' },
+    { token: 'number', foreground: '9D174D' },
     { token: 'keyword', foreground: 'B45309' },
     { token: 'comment', foreground: '6B7580', fontStyle: 'italic' }
   ],
