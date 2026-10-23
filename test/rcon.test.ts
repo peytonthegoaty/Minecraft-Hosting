@@ -7,7 +7,7 @@ function fakeRconServer(password: string): Promise<{ port: number; close: () => 
     const srv = net.createServer((sock) => {
       let buf = Buffer.alloc(0)
       sock.on('data', (d) => {
-        buf = Buffer.concat([buf, d])
+        buf = Buffer.concat([buf, d as Buffer])
         while (buf.length >= 4) {
           const len = buf.readInt32LE(0)
           if (buf.length < 4 + len) return

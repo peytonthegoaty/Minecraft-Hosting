@@ -4,6 +4,7 @@ import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import type { ApiEvents } from '@shared/api'
 import type { LogLevel, LogLine, Metrics, NewServerInput, ServerConfig, ServerStatus, ServerSummary, ServerType, VersionOption } from '@shared/types'
+import { SERVER_TYPES } from '@shared/types'
 import type { JavaService } from '../java/JavaService'
 import type { DownloadManager } from '../downloads/DownloadManager'
 import { ProcessSampler } from '../metrics/processMetrics'
@@ -16,6 +17,7 @@ import { buildJavaArgs } from './launch'
 import { isStartupDone, parseLine, parseList, parseTps, playerJoined, playerLeft, stripAnsi, tpsCommand } from './logParse'
 import { Properties } from './properties'
 import { getProvider, javaForMinecraft } from './providers'
+import { neoforgeToMc } from './providers/forge'
 import { RconClient } from './rcon'
 
 const CONFIG_FILE = 'blockhost.json'
@@ -370,7 +372,7 @@ export class ServerManager {
     this.deps.emit('javaRequired', {
       serverId: rt.cfg.id,
       major: rt.cfg.javaMajor,
-      reason: `${rt.cfg.name} runs ${rt.cfg.type === 'vanilla' ? 'Minecraft' : rt.cfg.type} ${rt.cfg.mcVersion}, which needs ${this.deps.java.describeRequirement(rt.cfg.javaMajor)}.`,
+      reason: `${rt.cfg.name} runs ${rt.cfg.type === 'vanilla' ? 'Minecraft' : (SERVER_TYPES.find((t) => t.id === rt.cfg.type)?.name ?? rt.cfg.type)} ${rt.cfg.mcVersion}, which needs ${this.deps.java.describeRequirement(rt.cfg.javaMajor)}.`,
       found: await this.deps.java.list()
     })
   }
@@ -699,7 +701,6 @@ export async function detectServer(dir: string): Promise<{ type: ServerType; mcV
   }
   if (await has('libraries/net/neoforged/neoforge')) {
     const r = await argsLaunch('libraries/net/neoforged/neoforge')
-    const { neoforgeToMc } = await import('./providers/forge')
     return { type: 'neoforge', mcVersion: r.version ? (neoforgeToMc(r.version) ?? undefined) : undefined, launch: r.launch }
   }
   if (await has('libraries/net/minecraftforge/forge')) {

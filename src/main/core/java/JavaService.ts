@@ -142,8 +142,9 @@ export class JavaService {
     const { stdout, stderr } = await run(bin, ['-XshowSettings:properties', '-version'])
     const info = parseJavaProperties(stderr + '\n' + stdout)
     if (!info) return null
+    // Report the real install (not a PATH shim like Oracle's "javapath") so duplicates collapse.
     let resolved = bin
-    if (bin === 'java' && info.home) resolved = path.join(info.home, 'bin', JAVA_BIN)
+    if (info.home && (bin === 'java' || (await exists(path.join(info.home, 'bin', JAVA_BIN))))) resolved = path.join(info.home, 'bin', JAVA_BIN)
     return {
       path: resolved,
       major: majorFromVersion(info.version),

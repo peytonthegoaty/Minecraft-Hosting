@@ -189,7 +189,7 @@ export interface AppSettings {
 }
 
 export interface SystemInfo {
-  platform: NodeJS.Platform | string
+  platform: string
   arch: string
   totalMemBytes: number
   freeMemBytes: number

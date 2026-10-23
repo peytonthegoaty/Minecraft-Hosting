@@ -5,6 +5,10 @@ import { buildHandlers, defaultServersDir, registerIpc } from './ipc'
 import { createServices, type Services } from './services'
 
 const isDev = !app.isPackaged
+
+// Same data folder whether packaged or run from source; BLOCKHOST_DATA_DIR allows a portable/test location.
+app.setName('Blockhost')
+app.setPath('userData', process.env['BLOCKHOST_DATA_DIR'] || path.join(app.getPath('appData'), 'Blockhost'))
 let win: BrowserWindow | null = null
 let services: Services | null = null
 let quitting = false

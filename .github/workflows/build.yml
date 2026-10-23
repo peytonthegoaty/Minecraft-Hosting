@@ -1,0 +1,79 @@
+name: Build
+
+on:
+  push:
+    branches: [main, 'claude/**']
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  test:
+    name: Tests (Linux)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - run: npm ci
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+      - name: End-to-end test (real Electron app + Java)
+        run: xvfb-run -a node e2e/app.e2e.mjs e2e/screenshots
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: e2e-screenshots-linux
+          path: e2e/screenshots
+
+  windows:
+    name: Windows installer
+    needs: test
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - run: npm ci
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+      - run: npm test
+      - run: npm run build
+      - name: End-to-end test on Windows
+        run: node e2e/app.e2e.mjs e2e/screenshots
+      - name: Package (.exe installer + portable)
+        run: npx electron-builder --win --publish ${{ startsWith(github.ref, 'refs/tags/v') && 'always' || 'never' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CSC_IDENTITY_AUTO_DISCOVERY: false
+      - name: Smoke-test the packaged app
+        run: node e2e/smoke-packaged.mjs release/win-unpacked/Blockhost.exe e2e/screenshots/packaged-windows.png
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Blockhost-Windows
+          path: |
+            release/*.exe
+            release/latest.yml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: e2e-screenshots-windows
+          path: e2e/screenshots

@@ -2,6 +2,7 @@ import os from 'node:os'
 import path from 'node:path'
 import { app, BrowserWindow, dialog, ipcMain, shell } from 'electron'
 import { ERROR_PREFIX, type Api } from '@shared/api'
+import { javaForMinecraft } from './core/servers/providers'
 import { UserError } from './util/errors'
 import { resolveInside } from './util/fsx'
 import type { Services } from './services'
@@ -61,7 +62,7 @@ export function buildHandlers(s: Services, getWindow: () => BrowserWindow | null
     acceptEula: (id) => s.servers.acceptEula(id),
 
     listJava: () => s.java.list(true),
-    requiredJava: async (_type, mc) => (await import('./core/servers/providers')).javaForMinecraft(mc),
+    requiredJava: (_type, mc) => javaForMinecraft(mc),
     installJava: (major) => s.java.install(major),
     removeJava: (p) => s.java.remove(p),
     addJavaManually: (p) => s.java.addManual(p),
