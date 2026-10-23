@@ -64,7 +64,7 @@ export function NewServer() {
 
   return (
     <div className="flex min-h-full flex-col gap-5 px-7 py-6">
-      <PageHeader title="New server" subtitle="Blockhost downloads everything it needs — server files, Java and tools." />
+      <PageHeader title="New server" subtitle="Crab Host downloads everything it needs — server files, Java and tools." />
 
       <ol aria-label="Steps" className="flex flex-wrap gap-2">
         {STEPS.map((label, i) => (
@@ -180,7 +180,7 @@ export function NewServer() {
               </div>
               <div className="flex gap-2">
                 <span className="font-medium">Java {javaMajor || '…'}</span>
-                <span className={cx('ml-auto font-semibold', javaReady ? 'text-accent' : 'text-muted')}>{required.loading ? '…' : javaReady ? 'Already installed' : 'Installed on first start'}</span>
+                <span className={cx('ml-auto font-semibold', javaReady ? 'text-success' : 'text-muted')}>{required.loading ? '…' : javaReady ? 'Already installed' : 'Installed on first start'}</span>
               </div>
               {(type === 'forge' || type === 'neoforge') && <p className="text-xs text-muted">The {typeInfo.name} installer runs once after download and fetches its libraries.</p>}
             </div>

@@ -24,9 +24,9 @@ export function createMockBridge(): Bridge {
     launch: { kind: 'jar' as const, jar: 'server.jar' }
   }
   const servers: ServerSummary[] = [
-    { ...base, id: 'survival', name: 'Survival SMP', type: 'paper', mcVersion: '1.21.4', loaderVersion: '232', memoryMb: 6144, port: 25565, javaMajor: 21, createdAt: now - 9e7, dir: 'C:\\Users\\you\\Documents\\Blockhost Servers\\survival-smp', status: 'running', startedAt: now - 8040000, players: ['Alex_Builds', 'Creeper99', 'SkyRunner', 'mossy_mae'], maxPlayers: 20, network: { upnp: true, playit: true, playitAddress: undefined } },
-    { ...base, id: 'creative', name: 'Creative Build', type: 'fabric', mcVersion: '1.21.4', loaderVersion: '0.16.10', memoryMb: 4096, port: 25566, javaMajor: 21, createdAt: now - 5e7, dir: 'C:\\Users\\you\\Documents\\Blockhost Servers\\creative-build', status: 'stopped', players: [], maxPlayers: 10, network: { upnp: false, playit: false } },
-    { ...base, id: 'modpack', name: 'Modpack Test', type: 'neoforge', mcVersion: '1.21.1', loaderVersion: '21.1.77', memoryMb: 8192, port: 25567, javaMajor: 21, createdAt: now - 1e7, dir: 'C:\\Users\\you\\Documents\\Blockhost Servers\\modpack-test', status: 'stopped', players: [], maxPlayers: 8, network: { upnp: false, playit: false } }
+    { ...base, id: 'survival', name: 'Survival SMP', type: 'paper', mcVersion: '1.21.4', loaderVersion: '232', memoryMb: 6144, port: 25565, javaMajor: 21, createdAt: now - 9e7, dir: 'C:\\Users\\you\\Documents\\Crab Host Servers\\survival-smp', status: 'running', startedAt: now - 8040000, players: ['Alex_Builds', 'Creeper99', 'SkyRunner', 'mossy_mae'], maxPlayers: 20, network: { upnp: true, playit: true, playitAddress: undefined } },
+    { ...base, id: 'creative', name: 'Creative Build', type: 'fabric', mcVersion: '1.21.4', loaderVersion: '0.16.10', memoryMb: 4096, port: 25566, javaMajor: 21, createdAt: now - 5e7, dir: 'C:\\Users\\you\\Documents\\Crab Host Servers\\creative-build', status: 'stopped', players: [], maxPlayers: 10, network: { upnp: false, playit: false } },
+    { ...base, id: 'modpack', name: 'Modpack Test', type: 'neoforge', mcVersion: '1.21.1', loaderVersion: '21.1.77', memoryMb: 8192, port: 25567, javaMajor: 21, createdAt: now - 1e7, dir: 'C:\\Users\\you\\Documents\\Crab Host Servers\\modpack-test', status: 'stopped', players: [], maxPlayers: 8, network: { upnp: false, playit: false } }
   ]
 
   const t0 = now - 600000
@@ -134,19 +134,19 @@ export function createMockBridge(): Bridge {
   const props = () => Object.fromEntries(contents['server.properties'].split('\n').filter((l) => l && !l.startsWith('#')).map((l) => [l.slice(0, l.indexOf('=')), l.slice(l.indexOf('=') + 1)]))
 
   const impl: Partial<{ [K in keyof Api]: (...a: Parameters<Api[K]>) => unknown }> = {
-    getSettings: () => ({ theme: (localStorage.getItem('bh-theme') as 'system') ?? 'system', serversDir: 'C:\\Users\\you\\Documents\\Blockhost Servers', defaultMemoryMb: 4096, checkForUpdates: true }),
+    getSettings: () => ({ theme: (localStorage.getItem('bh-theme') as 'system') ?? 'system', serversDir: 'C:\\Users\\you\\Documents\\Crab Host Servers', defaultMemoryMb: 4096, checkForUpdates: true }),
     updateSettings: (p) => {
       if (p.theme) localStorage.setItem('bh-theme', p.theme)
       return { ...(impl.getSettings!() as object), ...p }
     },
-    getSystemInfo: () => ({ platform: 'win32', arch: 'x64', totalMemBytes: 16 * 1024 ** 3, freeMemBytes: 6.2 * 1024 ** 3, cpus: 12, appVersion: '0.1.0', dataDir: 'C:\\Users\\you\\AppData\\Roaming\\Blockhost' }),
+    getSystemInfo: () => ({ platform: 'win32', arch: 'x64', totalMemBytes: 16 * 1024 ** 3, freeMemBytes: 6.2 * 1024 ** 3, cpus: 12, appVersion: '0.1.0', dataDir: 'C:\\Users\\you\\AppData\\Roaming\\Crab Host' }),
     listServers: () => servers,
     listVersions: (type) =>
       (type === 'neoforge' ? ['1.21.4', '1.21.3', '1.21.1', '1.21', '1.20.6', '1.20.4', '1.20.2'] : ['1.21.4', '1.21.3', '1.21.1', '1.21', '1.20.6', '1.20.4', '1.20.1', '1.19.4', '1.18.2', '1.16.5', '1.12.2']).map((id, i) => ({ id, stable: true, latest: i === 0 })),
     listLoaderVersions: (type) => (type === 'fabric' ? ['0.16.10', '0.16.9'] : type === 'forge' ? ['54.1.0', '54.0.26'] : type === 'neoforge' ? ['21.4.75-beta', '21.4.70-beta'] : []).map((id, i) => ({ id, stable: true, latest: i === 0 })),
     requiredJava: (_t, mc) => (mc.startsWith('1.16') || mc.startsWith('1.12') ? 8 : mc.startsWith('1.18') || mc.startsWith('1.19') || mc === '1.20.1' || mc === '1.20.4' ? 17 : 21),
     listJava: () => [
-      { path: 'C:\\Users\\you\\AppData\\Roaming\\Blockhost\\runtimes\\java-21\\bin\\java.exe', major: 21, version: '21.0.5', vendor: 'Eclipse Adoptium', arch: 'amd64', managed: true },
+      { path: 'C:\\Users\\you\\AppData\\Roaming\\Crab Host\\runtimes\\java-21\\bin\\java.exe', major: 21, version: '21.0.5', vendor: 'Eclipse Adoptium', arch: 'amd64', managed: true },
       { path: 'C:\\Program Files\\Java\\jre1.8.0_421\\bin\\java.exe', major: 8, version: '1.8.0_421', vendor: 'Oracle Corporation', arch: 'amd64', managed: false }
     ],
     getLog: (id) => logs[id] ?? [],
@@ -187,7 +187,7 @@ export function createMockBridge(): Bridge {
   }
 
   // Lets screenshot scripts trigger events such as the Java popup.
-  ;(window as unknown as { __blockhostMock: unknown }).__blockhostMock = { emit }
+  ;(window as unknown as { __crabhostMock: unknown }).__crabhostMock = { emit }
 
   return {
     invoke: async (method, ...args) => {

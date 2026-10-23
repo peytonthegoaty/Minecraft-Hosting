@@ -121,11 +121,11 @@ export interface ApiEvents {
 
 export type ApiMethod = keyof Api
 
-/** What the preload script exposes on `window.blockhost`. */
+/** What the preload script exposes on `window.crabhost`. */
 export interface Bridge {
   invoke<K extends ApiMethod>(method: K, ...args: Parameters<Api[K]>): Promise<Awaited<ReturnType<Api[K]>>>
   on<K extends keyof ApiEvents>(event: K, cb: (payload: ApiEvents[K]) => void): () => void
 }
 
 /** Errors thrown in the main process come back with this prefix so the UI can show a clean message. */
-export const ERROR_PREFIX = 'BLOCKHOST:'
+export const ERROR_PREFIX = 'CRABHOST:'

@@ -48,7 +48,7 @@ export function ServerControls({ server }: { server: ServerSummary }) {
 
 function AddressCard({ title, icon, address, status, highlight, action }: { title: string; icon: React.ReactNode; address: string | null; status: React.ReactNode; highlight?: boolean; action?: React.ReactNode }) {
   return (
-    <Card className={cx('flex flex-col gap-2.5 p-4', highlight && '!border-accent')}>
+    <Card className={cx('flex flex-col gap-2.5 p-4', highlight && '!border-success')}>
       <div className="flex items-center gap-2 text-[13px] font-semibold">
         {icon}
         {title}
@@ -73,8 +73,8 @@ export function JoinCards({ net, server }: { net: NetworkStatus | null; server: 
         address={upnp?.state === 'open' && net?.publicIp ? `${net.publicIp}:${port}` : null}
         status={
           upnp?.state === 'open' ? (
-            <span className="flex items-center gap-1.5 text-accent">
-              <Dot /> Port open
+            <span className="flex items-center gap-1.5 text-success">
+              <Dot tone="success" /> Port open
             </span>
           ) : upnp?.state === 'failed' ? (
             <span className="flex items-center gap-1.5 text-danger">
@@ -99,8 +99,8 @@ export function JoinCards({ net, server }: { net: NetworkStatus | null; server: 
         address={playit?.address ?? null}
         status={
           playit?.state === 'online' ? (
-            <span className="flex items-center gap-1.5 text-accent">
-              <Dot /> Online
+            <span className="flex items-center gap-1.5 text-success">
+              <Dot tone="success" /> Online
             </span>
           ) : playit?.state === 'needsClaim' ? (
             <span className="text-warn">Needs linking</span>
@@ -206,7 +206,7 @@ export function Dashboard({ server }: { server: ServerSummary }) {
           <span className="text-[26px] font-bold tracking-tight">
             {last?.tps !== undefined ? last.tps.toFixed(1) : '—'} {last?.mspt !== undefined && <span className="text-[15px] font-medium text-muted">· {last.mspt.toFixed(0)} ms</span>}
           </span>
-          <span className={cx('text-xs font-semibold', last?.tps === undefined ? 'text-muted' : last.tps >= 18 ? 'text-accent' : last.tps >= 15 ? 'text-warn' : 'text-danger')}>
+          <span className={cx('text-xs font-semibold', last?.tps === undefined ? 'text-muted' : last.tps >= 18 ? 'text-success' : last.tps >= 15 ? 'text-warn' : 'text-danger')}>
             {last?.tps === undefined ? (running ? 'Measuring…' : 'Not running') : last.tps >= 18 ? 'Running smoothly' : last.tps >= 15 ? 'A little laggy' : 'Lagging'}
           </span>
         </Card>

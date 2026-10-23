@@ -1,6 +1,6 @@
 // Small fetch helpers with a descriptive User-Agent (PaperMC's API requires one), timeouts and retries.
 
-export const USER_AGENT = 'Blockhost/0.1 (+https://github.com/peytonthegoaty/Minecraft-Hosting)'
+export const USER_AGENT = 'CrabHost/0.1 (+https://github.com/peytonthegoaty/Minecraft-Hosting)'
 
 export interface RequestOptions {
   timeoutMs?: number

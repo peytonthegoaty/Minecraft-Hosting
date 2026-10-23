@@ -20,7 +20,7 @@ import { getProvider, javaForMinecraft } from './providers'
 import { neoforgeToMc } from './providers/forge'
 import { RconClient } from './rcon'
 
-const CONFIG_FILE = 'blockhost.json'
+const CONFIG_FILE = 'crabhost.json'
 const MAX_LOG = 3000
 const MAX_METRICS = 300
 
@@ -243,7 +243,7 @@ export class ServerManager {
   private async writeEula(dir: string): Promise<void> {
     await writeFileAtomic(
       path.join(dir, 'eula.txt'),
-      `#By changing the setting below to TRUE you are indicating your agreement to the EULA (https://aka.ms/MinecraftEULA).\n#Accepted in Blockhost on ${new Date().toString()}\neula=true\n`
+      `#By changing the setting below to TRUE you are indicating your agreement to the EULA (https://aka.ms/MinecraftEULA).\n#Accepted in Crab Host on ${new Date().toString()}\neula=true\n`
     )
   }
 
@@ -255,7 +255,7 @@ export class ServerManager {
   }
 
   async importFolder(dir: string, name: string): Promise<ServerSummary> {
-    if ([...this.servers.values()].some((r) => path.resolve(r.dir) === path.resolve(dir))) throw new UserError('That folder is already in Blockhost.')
+    if ([...this.servers.values()].some((r) => path.resolve(r.dir) === path.resolve(dir))) throw new UserError('That folder is already in Crab Host.')
     const existing = await readJson<ServerConfig | null>(path.join(dir, CONFIG_FILE), null)
     if (existing) {
       const rt = this.makeRuntime(existing, dir)

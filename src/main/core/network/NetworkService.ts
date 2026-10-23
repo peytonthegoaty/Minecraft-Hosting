@@ -151,7 +151,7 @@ export class NetworkService {
     s.upnp = { state: 'working' }
     this.push(id)
     try {
-      await this.upnp.map(cfg.port, primary, `Blockhost ${cfg.name}`)
+      await this.upnp.map(cfg.port, primary, `Crab Host ${cfg.name}`)
       s.mappedPort = cfg.port
       const ext = await this.upnp.externalIp().catch(() => null)
       s.upnp = { state: 'open', externalIp: ext ?? undefined }

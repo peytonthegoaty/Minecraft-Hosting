@@ -69,7 +69,7 @@ export function JavaModal() {
               <span className="selectable min-w-0 truncate font-mono text-xs text-muted" title={j.path}>
                 {j.path}
               </span>
-              <Badge tone={isJavaAcceptable(javaPrompt.major, j.major) ? 'accent' : 'danger'} className="ml-auto shrink-0">
+              <Badge tone={isJavaAcceptable(javaPrompt.major, j.major) ? 'success' : 'danger'} className="ml-auto shrink-0">
                 {isJavaAcceptable(javaPrompt.major, j.major) ? 'Works' : j.major < javaPrompt.major ? 'Too old' : 'Too new'}
               </Badge>
             </div>
@@ -78,7 +78,7 @@ export function JavaModal() {
 
         <div className="flex flex-col gap-1 rounded-xl border-2 border-accent bg-accent/10 px-4 py-3.5">
           <span className="text-sm font-semibold">Install automatically</span>
-          <span className="text-[13px] text-muted">Eclipse Temurin {major} · about 50 MB · no admin rights needed. Stored inside Blockhost and won&apos;t change other apps.</span>
+          <span className="text-[13px] text-muted">Eclipse Temurin {major} · about 50 MB · no admin rights needed. Stored inside Crab Host and won&apos;t change other apps.</span>
         </div>
 
         {error && (

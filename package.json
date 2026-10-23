@@ -1,10 +1,10 @@
 {
-  "name": "blockhost",
-  "productName": "Blockhost",
+  "name": "crabhost",
+  "productName": "Crab Host",
   "version": "0.1.0",
   "description": "Host Minecraft servers from your own PC \u2014 downloads Java, server files and tunnels for you.",
   "main": "./out/main/index.js",
-  "author": "Blockhost",
+  "author": "Crab Host",
   "license": "MIT",
   "private": true,
   "scripts": {

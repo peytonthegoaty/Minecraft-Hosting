@@ -1,7 +1,8 @@
-import { Blocks, Box, Download, FolderOpen, Gauge, Globe, Moon, Archive, Plus, Server, SlidersHorizontal, Sun, Monitor, Terminal, Settings2 } from 'lucide-react'
+import { Blocks, Download, FolderOpen, Gauge, Globe, Moon, Archive, Plus, Server, SlidersHorizontal, Sun, Monitor, Terminal, Settings2 } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { addonKind } from '@shared/types'
 import { useStore, type View } from '../store'
+import { CrabLogo } from './CrabLogo'
 import { cx, Dot, STATUS_META } from './ui'
 
 function NavItem({ active, onClick, icon, children, badge, small }: { active: boolean; onClick: () => void; icon: ReactNode; children: ReactNode; badge?: ReactNode; small?: boolean }) {
@@ -139,9 +140,9 @@ export function Brand() {
   return (
     <div className="flex items-center gap-2.5">
       <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-accent text-on-accent">
-        <Box size={16} strokeWidth={2.4} />
+        <CrabLogo size={19} />
       </span>
-      <span className="text-[15px] font-bold tracking-tight">Blockhost</span>
+      <span className="text-[15px] font-bold tracking-tight">Crab Host</span>
     </div>
   )
 }

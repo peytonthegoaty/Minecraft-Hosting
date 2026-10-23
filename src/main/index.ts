@@ -6,9 +6,9 @@ import { createServices, type Services } from './services'
 
 const isDev = !app.isPackaged
 
-// Same data folder whether packaged or run from source; BLOCKHOST_DATA_DIR allows a portable/test location.
-app.setName('Blockhost')
-app.setPath('userData', process.env['BLOCKHOST_DATA_DIR'] || path.join(app.getPath('appData'), 'Blockhost'))
+// Same data folder whether packaged or run from source; CRABHOST_DATA_DIR allows a portable/test location.
+app.setName('Crab Host')
+app.setPath('userData', process.env['CRABHOST_DATA_DIR'] || path.join(app.getPath('appData'), 'Crab Host'))
 let win: BrowserWindow | null = null
 let services: Services | null = null
 let quitting = false
@@ -41,7 +41,7 @@ function createWindow(): void {
     minWidth: 960,
     minHeight: 620,
     show: false,
-    title: 'Blockhost',
+    title: 'Crab Host',
     backgroundColor: t.color,
     titleBarStyle: process.platform === 'darwin' ? 'hiddenInset' : 'hidden',
     titleBarOverlay: process.platform === 'win32' ? { ...t, height: 40 } : undefined,
@@ -73,7 +73,7 @@ function createWindow(): void {
       cancelId: 1,
       title: 'Servers are running',
       message: 'Some servers are still running.',
-      detail: 'Blockhost will stop them safely (saving the world) before closing.'
+      detail: 'Crab Host will stop them safely (saving the world) before closing.'
     })
     if (r.response === 0) {
       quitting = true
@@ -98,7 +98,7 @@ async function checkForUpdates(): Promise<void> {
   try {
     const { autoUpdater } = await import('electron-updater')
     autoUpdater.autoDownload = true
-    autoUpdater.on('update-downloaded', (info) => emit('toast', { kind: 'info', message: `Blockhost ${info.version} is ready — it will install when you close the app.` }))
+    autoUpdater.on('update-downloaded', (info) => emit('toast', { kind: 'info', message: `Crab Host ${info.version} is ready — it will install when you close the app.` }))
     await autoUpdater.checkForUpdates()
   } catch {
     // No release feed configured or offline.
@@ -116,7 +116,7 @@ if (!app.requestSingleInstanceLock()) {
   })
 
   app.whenReady().then(async () => {
-    app.setAppUserModelId('gg.blockhost.app')
+    app.setAppUserModelId('gg.crabhost.app')
     services = await createServices(
       app.getPath('userData'),
       { theme: 'system', serversDir: defaultServersDir(), defaultMemoryMb: 4096, checkForUpdates: true },

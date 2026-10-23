@@ -5,8 +5,8 @@ import path from 'node:path'
 import { _electron as electron } from 'playwright'
 
 const exe = path.resolve(process.argv[2])
-const data = mkdtempSync(path.join(os.tmpdir(), 'blockhost-smoke-'))
-const app = await electron.launch({ executablePath: exe, args: ['--no-sandbox'], env: { ...process.env, BLOCKHOST_DATA_DIR: data, HOME: data } })
+const data = mkdtempSync(path.join(os.tmpdir(), 'crabhost-smoke-'))
+const app = await electron.launch({ executablePath: exe, args: ['--no-sandbox'], env: { ...process.env, CRABHOST_DATA_DIR: data, HOME: data } })
 const page = await app.firstWindow()
 const errors = []
 page.on('pageerror', (e) => errors.push(e.message))

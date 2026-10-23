@@ -127,5 +127,5 @@ export function registerIpc(handlers: Handlers): void {
 }
 
 export function defaultServersDir(): string {
-  return path.join(app.getPath('documents'), 'Blockhost Servers')
+  return path.join(app.getPath('documents'), 'Crab Host Servers')
 }

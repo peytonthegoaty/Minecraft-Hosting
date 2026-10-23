@@ -19,7 +19,7 @@ export function DownloadsPanel() {
       {downloads.map((d) => (
         <div key={d.id} className="flex flex-col gap-1.5">
           <div className="flex items-center gap-2 text-[13px]">
-            {d.status === 'done' && <CheckCircle2 size={15} className="shrink-0 text-accent" />}
+            {d.status === 'done' && <CheckCircle2 size={15} className="shrink-0 text-success" />}
             {d.status === 'error' && <XCircle size={15} className="shrink-0 text-danger" />}
             <span className="min-w-0 flex-1 truncate font-medium">{d.label}</span>
             <span className="shrink-0 text-muted">

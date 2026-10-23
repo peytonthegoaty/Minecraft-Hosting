@@ -6,7 +6,7 @@ function run(cmd: string, args: string[]): Promise<{ code: number; out: string }
   })
 }
 
-const ruleName = (port: number) => `Blockhost Minecraft ${port}`
+const ruleName = (port: number) => `Crab Host Minecraft ${port}`
 
 export async function firewallStatus(port: number): Promise<'allowed' | 'missing' | 'n/a'> {
   if (process.platform !== 'win32') return 'n/a'

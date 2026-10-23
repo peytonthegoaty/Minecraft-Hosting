@@ -14,7 +14,7 @@ function ServerCard({ s }: { s: ServerSummary }) {
   const busy = s.status === 'installing' || s.status === 'stopping'
   const typeName = SERVER_TYPES.find((t) => t.id === s.type)?.name ?? s.type
   return (
-    <article className={`flex flex-col gap-3.5 rounded-[14px] border bg-surface p-[18px] ${running ? 'border-accent' : 'border-line'}`}>
+    <article className={`flex flex-col gap-3.5 rounded-[14px] border bg-surface p-[18px] ${running ? 'border-success' : 'border-line'}`}>
       <div className="flex items-start gap-3">
         <ServerTile name={s.name} type={s.type} size={44} />
         <div className="flex min-w-0 flex-col gap-0.5">
@@ -84,7 +84,7 @@ function ImportModal({ open, onClose }: { open: boolean; onClose: () => void }) 
   }
   return (
     <Modal open={open} onClose={onClose} title="Import a server folder">
-      <p className="text-[13px] text-muted">Already have a server? Point Blockhost at its folder. Nothing is moved or changed until you start it.</p>
+      <p className="text-[13px] text-muted">Already have a server? Point Crab Host at its folder. Nothing is moved or changed until you start it.</p>
       <Field label="Folder">
         <div className="flex gap-2">
           <input className={inputCls} readOnly value={dir} placeholder="Choose a folder…" aria-label="Folder" />
@@ -160,7 +160,7 @@ export function Home() {
             </Button>
           }
         >
-          Pick Paper, Fabric, Forge or another type. Blockhost downloads the server, the right Java and everything else it needs.
+          Pick Paper, Fabric, Forge or another type. Crab Host downloads the server, the right Java and everything else it needs.
         </Empty>
       ) : (
         <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-3.5">

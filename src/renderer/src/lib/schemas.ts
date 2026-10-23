@@ -10,7 +10,7 @@ const obj = (properties: Record<string, JSONSchema>): JSONSchema => ({ type: 'ob
 export const SCHEMAS: { fileMatch: string[]; uri: string; schema: JSONSchema }[] = [
   {
     fileMatch: ['**/bukkit.yml'],
-    uri: 'blockhost://schemas/bukkit.json',
+    uri: 'crabhost://schemas/bukkit.json',
     schema: obj({
       settings: obj({ 'allow-end': bool, 'warn-on-overload': bool, 'connection-throttle': int, 'query-plugins': bool, 'shutdown-message': { type: 'string' }, 'minimum-api': { type: 'string' } }),
       'spawn-limits': obj({ monsters: int, animals: int, 'water-animals': int, 'water-ambient': int, 'water-underground-creature': int, axolotls: int, ambient: int }),
@@ -20,7 +20,7 @@ export const SCHEMAS: { fileMatch: string[]; uri: string; schema: JSONSchema }[]
   },
   {
     fileMatch: ['**/spigot.yml'],
-    uri: 'blockhost://schemas/spigot.json',
+    uri: 'crabhost://schemas/spigot.json',
     schema: obj({
       settings: obj({ debug: bool, 'restart-on-crash': bool, 'restart-script': { type: 'string' }, 'timeout-time': int, 'netty-threads': int, bungeecord: bool, 'save-user-cache-on-stop-only': bool, 'player-shuffle': int }),
       'world-settings': { type: 'object', additionalProperties: obj({ 'view-distance': { anyOf: [int, { enum: ['default'] }] }, 'simulation-distance': { anyOf: [int, { enum: ['default'] }] }, 'mob-spawn-range': int, 'item-despawn-rate': int }) }
@@ -28,7 +28,7 @@ export const SCHEMAS: { fileMatch: string[]; uri: string; schema: JSONSchema }[]
   },
   {
     fileMatch: ['**/config/paper-global.yml'],
-    uri: 'blockhost://schemas/paper-global.json',
+    uri: 'crabhost://schemas/paper-global.json',
     schema: obj({
       _version: int,
       'chunk-loading-basic': obj({ 'autoconfig-send-distance': bool, 'player-max-chunk-generate-rate': num, 'player-max-chunk-load-rate': num, 'player-max-chunk-send-rate': num }),
@@ -41,7 +41,7 @@ export const SCHEMAS: { fileMatch: string[]; uri: string; schema: JSONSchema }[]
   },
   {
     fileMatch: ['**/purpur.yml'],
-    uri: 'blockhost://schemas/purpur.json',
+    uri: 'crabhost://schemas/purpur.json',
     schema: obj({ version: int, settings: obj({ 'use-alternative-keepalive': bool, 'server-mod-name': { type: 'string' } }) })
   }
 ]

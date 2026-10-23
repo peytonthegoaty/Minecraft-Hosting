@@ -4,6 +4,7 @@ import type { ServerConfig, ServerSummary } from '@shared/types'
 import { isJavaAcceptable } from '@shared/versions'
 import { api } from '../api'
 import { Button, Card, cx, Field, inputCls, Modal, PageHeader, Segmented, Spinner, ToggleRow } from '../components/ui'
+import { CrabLogo } from '../components/CrabLogo'
 import { McText } from '../lib/mcText'
 import { useAsync } from '../lib/useAsync'
 import { attempt, useStore } from '../store'
@@ -79,13 +80,15 @@ export function Config({ server }: { server: ServerSummary }) {
       <div className="grid grid-cols-[repeat(auto-fit,minmax(360px,1fr))] items-start gap-3.5">
         <Card className="flex flex-col gap-3.5 p-[18px]">
           <h2 className="text-[15px] font-semibold">General</h2>
-          <Field label="Server name (in Blockhost)" htmlFor="name">
+          <Field label="Server name (in Crab Host)" htmlFor="name">
             <input id="name" className={inputCls} value={c('name')} onChange={(e) => setC('name', e.target.value)} />
           </Field>
           <Field label="Message of the day" htmlFor="motd" hint="Use & or § color codes — the preview shows the multiplayer list.">
             <input id="motd" className={cx(inputCls, 'font-mono')} value={val('motd', 'A Minecraft Server')} onChange={(e) => setVal('motd', e.target.value)} />
             <div aria-label="Server list preview" className="mt-1 flex items-center gap-3 rounded-lg border border-[#3A3A3A] bg-[#1E1E1E] px-3 py-2.5">
-              <span className="h-10 w-10 shrink-0 rounded bg-[#4ADE80]" />
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded bg-[#FB923C] text-[#2A1204]">
+                <CrabLogo size={30} />
+              </span>
               <div className="flex min-w-0 flex-col gap-0.5 font-mono text-[13px]">
                 <span className="text-white">
                   {c('name')} <span className="text-[#AAAAAA]">· {server.players.length}/{val('max-players', '20')}</span>
@@ -144,7 +147,7 @@ export function Config({ server }: { server: ServerSummary }) {
               {compatible.map((j) => (
                 <option key={j.path} value={j.path}>
                   Java {j.major} · {j.vendor} {j.version}
-                  {j.managed ? ' (managed by Blockhost)' : ''}
+                  {j.managed ? ' (managed by Crab Host)' : ''}
                 </option>
               ))}
             </select>
@@ -232,7 +235,7 @@ export function Config({ server }: { server: ServerSummary }) {
       <Card className="flex flex-wrap items-center gap-3 !border-danger/40 p-[18px]">
         <div className="flex min-w-0 flex-1 flex-col gap-0.5">
           <h2 className="text-[15px] font-semibold">Remove this server</h2>
-          <span className="text-[13px] text-muted">Removes it from Blockhost. You choose whether its files are deleted too.</span>
+          <span className="text-[13px] text-muted">Removes it from Crab Host. You choose whether its files are deleted too.</span>
         </div>
         <Button variant="danger" icon={<Trash2 size={15} />} disabled={server.status !== 'stopped' && server.status !== 'crashed'} onClick={() => setDeleteOpen(true)}>
           Remove server…

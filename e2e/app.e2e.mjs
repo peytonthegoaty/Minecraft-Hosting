@@ -13,7 +13,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const shots = path.resolve(process.argv[2] ?? path.join(root, 'e2e', 'screenshots'))
 mkdirSync(shots, { recursive: true })
 
-const home = mkdtempSync(path.join(os.tmpdir(), 'blockhost-e2e-'))
+const home = mkdtempSync(path.join(os.tmpdir(), 'crabhost-e2e-'))
 const dataDir = path.join(home, 'data')
 const serverDir = path.join(home, 'servers', 'e2e')
 mkdirSync(dataDir, { recursive: true })
@@ -32,7 +32,7 @@ const javaMajor = parseInt(`${probe.stderr}${probe.stdout}`.match(/java\.version
 writeFileSync(path.join(serverDir, 'eula.txt'), 'eula=true\n')
 writeFileSync(path.join(serverDir, 'server.properties'), 'motd=E2E test\nmax-players=20\n')
 writeFileSync(
-  path.join(serverDir, 'blockhost.json'),
+  path.join(serverDir, 'crabhost.json'),
   JSON.stringify({
     id: 'e2e-test',
     name: 'E2E Server',
@@ -58,7 +58,7 @@ writeFileSync(path.join(dataDir, 'settings.json'), JSON.stringify({ theme: 'dark
 
 const app = await electron.launch({
   args: [path.join(root, 'out', 'main', 'index.js'), '--no-sandbox'],
-  env: { ...process.env, BLOCKHOST_DATA_DIR: dataDir, ELECTRON_ENABLE_LOGGING: '1' }
+  env: { ...process.env, CRABHOST_DATA_DIR: dataDir, ELECTRON_ENABLE_LOGGING: '1' }
 })
 const mainLog = []
 app.process().stdout?.on('data', (d) => mainLog.push(String(d)))

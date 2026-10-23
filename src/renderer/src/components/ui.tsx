@@ -66,9 +66,10 @@ export function Card({ className, children, ...rest }: { className?: string; chi
   )
 }
 
-type Tone = 'accent' | 'warn' | 'danger' | 'info' | 'muted'
+type Tone = 'accent' | 'success' | 'warn' | 'danger' | 'info' | 'muted'
 const TONES: Record<Tone, string> = {
   accent: 'bg-accent/10 text-accent',
+  success: 'bg-success/10 text-success',
   warn: 'bg-warn/10 text-warn',
   danger: 'bg-danger/10 text-danger',
   info: 'bg-info/10 text-info',
@@ -80,7 +81,7 @@ export function Badge({ tone = 'muted', children, className }: { tone?: Tone; ch
 }
 
 export function Dot({ tone = 'accent', pulse }: { tone?: Tone; pulse?: boolean }) {
-  const bg = { accent: 'bg-accent', warn: 'bg-warn', danger: 'bg-danger', info: 'bg-info', muted: 'bg-muted' }[tone]
+  const bg = { accent: 'bg-accent', success: 'bg-success', warn: 'bg-warn', danger: 'bg-danger', info: 'bg-info', muted: 'bg-muted' }[tone]
   return <span aria-hidden className={cx('inline-block h-2 w-2 shrink-0 rounded-full', bg, pulse && 'animate-soft-pulse')} />
 }
 
@@ -88,7 +89,7 @@ export const STATUS_META: Record<ServerStatus, { label: string; tone: Tone; puls
   stopped: { label: 'Stopped', tone: 'muted' },
   installing: { label: 'Installing', tone: 'info', pulse: true },
   starting: { label: 'Starting', tone: 'warn', pulse: true },
-  running: { label: 'Running', tone: 'accent' },
+  running: { label: 'Running', tone: 'success' },
   stopping: { label: 'Stopping', tone: 'warn', pulse: true },
   crashed: { label: 'Crashed', tone: 'danger' }
 }
@@ -242,7 +243,7 @@ export function CopyField({ value, label, large }: { value: string; label: strin
     <div className="flex items-center gap-2">
       <code className={cx('selectable min-w-0 flex-1 truncate rounded-lg border border-line bg-code px-3 py-2.5 font-mono font-medium', large ? 'text-base' : 'text-[15px]')}>{value}</code>
       <IconButton label={copied ? 'Copied' : `Copy ${label}`} onClick={copy} className="h-11 w-11">
-        {copied ? <Check size={16} className="text-accent" /> : <Copy size={16} />}
+        {copied ? <Check size={16} className="text-success" /> : <Copy size={16} />}
       </IconButton>
     </div>
   )

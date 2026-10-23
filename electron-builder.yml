@@ -1,6 +1,6 @@
-appId: gg.blockhost.app
-productName: Blockhost
-copyright: Copyright © 2026 Blockhost
+appId: gg.crabhost.app
+productName: Crab Host
+copyright: Copyright © 2026 Crab Host
 directories:
   buildResources: build
   output: release
@@ -23,20 +23,20 @@ nsis:
   allowToChangeInstallationDirectory: true
   createDesktopShortcut: always
   createStartMenuShortcut: true
-  shortcutName: Blockhost
-  artifactName: Blockhost-Setup-${version}.${ext}
+  shortcutName: Crab Host
+  artifactName: CrabHost-Setup-${version}.${ext}
 portable:
-  artifactName: Blockhost-${version}-portable.${ext}
+  artifactName: CrabHost-${version}-portable.${ext}
 mac:
   icon: build/icon.png
   category: public.app-category.utilities
   target: [dmg]
-  artifactName: Blockhost-${version}-${arch}.${ext}
+  artifactName: CrabHost-${version}-${arch}.${ext}
 linux:
   icon: build/icon.png
   category: Utility
   target: [AppImage]
-  artifactName: Blockhost-${version}-${arch}.${ext}
+  artifactName: CrabHost-${version}-${arch}.${ext}
 publish:
   provider: github
   owner: peytonthegoaty

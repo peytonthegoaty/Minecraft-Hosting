@@ -335,7 +335,7 @@ function Browse({ server, installed }: { server: ServerSummary; installed: Addon
                   Details <ExternalLink size={12} />
                 </button>
                 {has ? (
-                  <span className="ml-auto inline-flex h-9 items-center gap-1.5 px-2 text-[13px] font-semibold text-accent">
+                  <span className="ml-auto inline-flex h-9 items-center gap-1.5 px-2 text-[13px] font-semibold text-success">
                     <Check size={15} /> Installed
                   </span>
                 ) : (

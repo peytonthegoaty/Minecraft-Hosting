@@ -15,6 +15,7 @@ module.exports = {
         muted: v('muted'),
         accent: v('accent'),
         'on-accent': v('on-accent'),
+        success: v('success'),
         warn: v('warn'),
         danger: v('danger'),
         info: v('info'),

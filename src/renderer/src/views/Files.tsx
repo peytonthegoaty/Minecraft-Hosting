@@ -300,7 +300,7 @@ export default function Files({ server }: { server: ServerSummary }) {
                 path={monaco.Uri.file(`/${tab.path}`).toString()}
                 language={languageFor(tab.path)}
                 value={tab.content}
-                theme={dark ? 'blockhost-dark' : 'blockhost-light'}
+                theme={dark ? 'crabhost-dark' : 'crabhost-light'}
                 loading={<Spinner />}
                 onMount={(ed) => {
                   editorRef.current = ed
@@ -325,7 +325,7 @@ export default function Files({ server }: { server: ServerSummary }) {
           <div className="flex min-h-[32px] flex-wrap items-center gap-4 border-t border-line bg-surface px-3.5 text-xs text-muted">
             {tab && !tab.binary ? (
               <>
-                <span className={cx('font-semibold', problems ? 'text-danger' : 'text-accent')}>{problems ? `${problems} problem${problems > 1 ? 's' : ''}` : 'No problems'}</span>
+                <span className={cx('font-semibold', problems ? 'text-danger' : 'text-success')}>{problems ? `${problems} problem${problems > 1 ? 's' : ''}` : 'No problems'}</span>
                 <span>{languageFor(tab.path) === 'yaml' ? 'YAML · checked as you type' : languageFor(tab.path)}</span>
                 <span className="ml-auto">
                   Ln {cursor.line}, Col {cursor.col}

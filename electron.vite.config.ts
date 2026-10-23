@@ -19,7 +19,7 @@ const CSP = [
 
 function cspPlugin(): Plugin {
   return {
-    name: 'blockhost-csp',
+    name: 'crabhost-csp',
     apply: 'build',
     transformIndexHtml: (html) => html.replace('<head>', `<head>\n    <meta http-equiv="Content-Security-Policy" content="${CSP}" />`)
   }

@@ -42,7 +42,7 @@ describe('server lifecycle', () => {
       downloads,
       emit: (event, payload) => events.push({ event, payload })
     })
-    // An existing server folder with a Blockhost config (import path), Paper type.
+    // An existing server folder with a Crab Host config (import path), Paper type.
     const dir = path.join(root, 'servers', 'smp')
     await makeJar(path.join(dir, 'server.jar'), { 'version.json': JSON.stringify({ id: '1.21.4' }) })
     await fs.writeFile(path.join(dir, 'server.properties'), 'motd=Hello\nserver-port=25565\nmax-players=20\n')
@@ -66,7 +66,7 @@ describe('server lifecycle', () => {
       network: { upnp: false, playit: false },
       rcon: { port: 25999, password: 'pw' }
     }
-    await fs.writeFile(path.join(dir, 'blockhost.json'), JSON.stringify(cfg))
+    await fs.writeFile(path.join(dir, 'crabhost.json'), JSON.stringify(cfg))
     const s = await mgr.importFolder(dir, 'ignored')
     id = s.id
   })

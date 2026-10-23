@@ -27,7 +27,7 @@ export function DownloadsView() {
 
   return (
     <div className="flex flex-col gap-6 px-7 pb-8 pt-6">
-      <PageHeader title="Downloads &amp; Java" subtitle="Everything Blockhost downloads lives here: Java runtimes, tools and cached server files." />
+      <PageHeader title="Downloads &amp; Java" subtitle="Everything Crab Host downloads lives here: Java runtimes, tools and cached server files." />
 
       {downloads.length > 0 && (
         <section className="flex flex-col gap-2.5">
@@ -70,14 +70,14 @@ export function DownloadsView() {
               <Spinner />
             </div>
           )}
-          {javas.data?.length === 0 && <p className="p-4 text-[13px] text-muted">No Java found. Blockhost installs the right one automatically when a server needs it.</p>}
+          {javas.data?.length === 0 && <p className="p-4 text-[13px] text-muted">No Java found. Crab Host installs the right one automatically when a server needs it.</p>}
           {javas.data?.map((j) => (
             <div key={j.path} className="flex flex-wrap items-center gap-3 border-b border-line px-4 py-3 last:border-b-0">
               <Coffee size={18} className="text-warn" />
               <div className="flex min-w-0 flex-1 flex-col">
                 <span className="flex items-center gap-2 text-sm font-semibold">
                   Java {j.major} <span className="text-xs font-normal text-muted">{j.vendor} {j.version}</span>
-                  {j.managed ? <Badge tone="accent">Managed by Blockhost</Badge> : <Badge>System</Badge>}
+                  {j.managed ? <Badge tone="accent">Managed by Crab Host</Badge> : <Badge>System</Badge>}
                 </span>
                 <span className="selectable truncate font-mono text-xs text-muted" title={j.path}>
                   {j.path}

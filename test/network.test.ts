@@ -49,7 +49,7 @@ describe('UPnP', () => {
     const port = (srv.address() as { port: number }).port
     const c = new UpnpClient()
     ;(c as unknown as { gateway: unknown }).gateway = { controlUrl: `http://127.0.0.1:${port}/ctl`, serviceType: 'urn:schemas-upnp-org:service:WANIPConnection:1' }
-    await c.map(25565, '192.168.1.42', 'Blockhost test')
+    await c.map(25565, '192.168.1.42', 'Crab Host test')
     expect(await c.externalIp()).toBe('203.0.113.24')
     await c.unmap(25565)
     expect(calls).toEqual(['AddPortMapping:3600', 'AddPortMapping:0', 'GetExternalIPAddress:', 'DeletePortMapping:'])

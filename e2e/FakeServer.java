@@ -1,5 +1,5 @@
 // A stand-in for a Minecraft server used by the end-to-end test: prints Paper-style logs,
-// answers console commands and speaks RCON, so Blockhost can be exercised without Mojang downloads.
+// answers console commands and speaks RCON, so Crab Host can be exercised without Mojang downloads.
 import java.io.*;
 import java.net.*;
 import java.nio.*;

@@ -1,9 +1,9 @@
 import { ERROR_PREFIX, type Api, type ApiEvents, type Bridge } from '@shared/api'
 import { createMockBridge } from './mock'
 
-// In Electron the preload provides window.blockhost; in a plain browser (npm run web) a mock backend is used.
-const bridge: Bridge = window.blockhost ?? createMockBridge()
-export const isMock = !window.blockhost
+// In Electron the preload provides window.crabhost; in a plain browser (npm run web) a mock backend is used.
+const bridge: Bridge = window.crabhost ?? createMockBridge()
+export const isMock = !window.crabhost
 export const platform = window.platform ?? (navigator.userAgent.includes('Windows') ? 'win32' : navigator.userAgent.includes('Mac') ? 'darwin' : 'linux')
 
 type Promised<T> = { [K in keyof T]: T[K] extends (...a: infer A) => infer R ? (...a: A) => Promise<Awaited<R>> : never }

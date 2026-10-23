@@ -24,7 +24,7 @@ configureMonacoYaml(monaco, {
   schemas: SCHEMAS
 })
 
-monaco.editor.defineTheme('blockhost-dark', {
+monaco.editor.defineTheme('crabhost-dark', {
   base: 'vs-dark',
   inherit: true,
   rules: [
@@ -43,7 +43,7 @@ monaco.editor.defineTheme('blockhost-dark', {
     'editor.selectionBackground': '#264F78'
   }
 })
-monaco.editor.defineTheme('blockhost-light', {
+monaco.editor.defineTheme('crabhost-light', {
   base: 'vs',
   inherit: true,
   rules: [

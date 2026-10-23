@@ -9,7 +9,7 @@ import { attempt } from '../store'
 function Step({ ok, label, detail, pending }: { ok: boolean | null; label: string; detail?: string; pending?: boolean }) {
   return (
     <li className="flex items-center gap-2.5 text-[13px]">
-      <span className={cx('flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-full', ok === null ? 'bg-hover text-muted' : ok ? 'bg-accent/10 text-accent' : 'bg-danger/10 text-danger')}>
+      <span className={cx('flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-full', ok === null ? 'bg-hover text-muted' : ok ? 'bg-success/10 text-success' : 'bg-danger/10 text-danger')}>
         {pending ? <Loader2 size={12} className="animate-spin" /> : ok === false ? <X size={12} strokeWidth={3} /> : <Check size={12} strokeWidth={3} />}
       </span>
       <span className={ok === null ? 'text-muted' : ''}>{label}</span>
@@ -52,8 +52,8 @@ export function Network({ server }: { server: ServerSummary }) {
           </div>
           <div className="ml-auto flex items-center gap-3">
             {p && p.state !== 'off' && (
-              <span className={cx('inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold', p.state === 'online' ? 'bg-accent/10 text-accent' : p.state === 'error' ? 'bg-danger/10 text-danger' : 'bg-warn/10 text-warn')}>
-                <Dot tone={p.state === 'online' ? 'accent' : p.state === 'error' ? 'danger' : 'warn'} pulse={p.state === 'starting'} />
+              <span className={cx('inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold', p.state === 'online' ? 'bg-success/10 text-success' : p.state === 'error' ? 'bg-danger/10 text-danger' : 'bg-warn/10 text-warn')}>
+                <Dot tone={p.state === 'online' ? 'success' : p.state === 'error' ? 'danger' : 'warn'} pulse={p.state === 'starting'} />
                 {{ online: 'Online', error: 'Error', needsClaim: 'Needs linking', claiming: 'Linking…', starting: 'Starting…', notInstalled: 'Downloading…', off: 'Off' }[p.state]}
               </span>
             )}
@@ -68,7 +68,7 @@ export function Network({ server }: { server: ServerSummary }) {
             ) : (
               <ol className="flex flex-col gap-2 rounded-[10px] border border-line bg-bg p-3.5 text-[13px]">
                 <li className="flex flex-wrap items-center gap-2">
-                  <span className="font-semibold">1.</span> Link Blockhost to a free playit.gg account.
+                  <span className="font-semibold">1.</span> Link Crab Host to a free playit.gg account.
                   <Button
                     size="sm"
                     variant="primary"

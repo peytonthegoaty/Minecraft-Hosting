@@ -65,10 +65,10 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CSC_IDENTITY_AUTO_DISCOVERY: false
       - name: Smoke-test the packaged app
-        run: node e2e/smoke-packaged.mjs release/win-unpacked/Blockhost.exe e2e/screenshots/packaged-windows.png
+        run: node e2e/smoke-packaged.mjs "release/win-unpacked/Crab Host.exe" e2e/screenshots/packaged-windows.png
       - uses: actions/upload-artifact@v4
         with:
-          name: Blockhost-Windows
+          name: CrabHost-Windows
           path: |
             release/*.exe
             release/latest.yml

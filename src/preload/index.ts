@@ -10,5 +10,5 @@ const bridge: Bridge = {
   }
 }
 
-contextBridge.exposeInMainWorld('blockhost', bridge)
+contextBridge.exposeInMainWorld('crabhost', bridge)
 contextBridge.exposeInMainWorld('platform', process.platform)

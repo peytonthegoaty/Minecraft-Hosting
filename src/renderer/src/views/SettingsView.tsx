@@ -47,13 +47,13 @@ export function SettingsView() {
       </Card>
       <Card className="flex flex-col gap-1 p-[18px]">
         <h2 className="mb-2 text-[15px] font-semibold">Updates</h2>
-        <ToggleRow title="Update Blockhost automatically" hint="New versions download in the background and install when you close the app." checked={settings.checkForUpdates} onChange={(v) => update({ checkForUpdates: v })} />
+        <ToggleRow title="Update Crab Host automatically" hint="New versions download in the background and install when you close the app." checked={settings.checkForUpdates} onChange={(v) => update({ checkForUpdates: v })} />
       </Card>
       <Card className="flex flex-col gap-2 p-[18px] text-[13px]">
         <h2 className="mb-1 text-[15px] font-semibold">About</h2>
         <div className="flex gap-3">
           <span className="w-28 text-muted">Version</span>
-          <span>Blockhost {sys.appVersion}{isMock ? ' (preview)' : ''}</span>
+          <span>Crab Host {sys.appVersion}{isMock ? ' (preview)' : ''}</span>
         </div>
         <div className="flex gap-3">
           <span className="w-28 text-muted">This PC</span>

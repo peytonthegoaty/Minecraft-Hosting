@@ -12,7 +12,7 @@ import { hangarDownload, searchHangar } from './sources/hangar'
 import { modrinthUpdates, modrinthVersions, pickVersion, primaryFile, searchModrinth } from './sources/modrinth'
 import { searchSpiget, spigetDownloadUrl, spigetInfo } from './sources/spiget'
 
-const INDEX_FILE = '.blockhost-addons.json'
+const INDEX_FILE = '.crabhost-addons.json'
 
 interface IndexEntry {
   source: AddonSource
